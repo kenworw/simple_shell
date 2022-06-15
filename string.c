@@ -1,112 +1,97 @@
 #include "main.h"
-
 /**
- * _strcmpdir - function that compares strings to find dir.
- * @str1: String parameter
- * @str2: String parameter
+ * _strcmpdir - compares strings to find dir.
  *
- * Return: mach or any
+ * @s1: string.
+ * @s2: string.
+ *
+ * Return: if match and any other number if otherwise.
  **/
-
-int _strcmpdir(char *str1, char *str2)
+int _strcmpdir(char *s1, char *s2)
 {
 	int i = 0;
 
-	for (; (*str2 != '\0' && *str1 != '\0') && *str1 == *str2; str1++)
+	for (; (*s2 != '\0' && *s1 != '\0') && *s1 == *s2; s1++)
 	{
 		if (i == 3)
-		{
 			break;
-		}
 		i++;
-		str2++;
+		s2++;
 	}
 
-	return (*str1 - *str2);
+	return (*s1 - *s2);
 }
-
 /**
- * _charput - function writes the character like putchar
- * @c: parameter
+ * charput - writes the character like putchar
+ * @c: The character to print
  *
- * Return: for  success 1 or for  error -1.
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-
-int _charput(char c)
+int charput(char c)
 {
 	return (write(1, &c, 1));
 }
 
 /**
- * _place - function similar to puts in C.
- * @str: parameter
+ * place - similar to puts in C
+ * @str: a pointer the integer we want to set to 402
  *
- * Return: void
+ * Return: int
  */
-
-void _place(char *str)
+void place(char *str)
 {
 	while (*str != '\0')
 	{
-		_charput(*str);
+		charput(*str);
 		str++;
 	}
 }
 
 /**
- * _strlen - function for the length of string.
- * @str: String parameter.
- * Return: return length of string.
+ * _strlen - Len string.
+ * @str: My string.
+ * Return: Length.
  */
 int _strlen(char *str)
 {
-	int i = 0;
+	int i;
 
-	while (str[i] != '\0')
-	{
-		i++;
-	}
+	for (i = 0; str[i] != '\0'; i++)
+		;
 
 	return (i);
 }
 
 /**
- * _strconcat - function that concatane strings.
- * @str1: String parameter
- * @str2: String  parameter
- * Return: Concat strings.
+ * str_concat - concatane strings.
+ * @s1: string.
+ * @s2: second string.
+ * Return: strings.
  */
-char *_strconcat(char *str1, char *str2)
+char *str_concat(char *s1, char *s2)
 {
 	char *a;
 	int lens1, lens2, j, i, e;
 
-	if (str1 == NULL)
-	{
-		str1 = "";
-	}
+	if (s1 == NULL)
+		s1 = "";
 
-	if (str2 == NULL)
-	{
-		str2 = "";
-	}
+	if (s2 == NULL)
+		s2 = "";
 
-	lens1 = _strlen(str1);
+	lens1 = _strlen(s1);
 
-	lens2 = _strlen(str2);
+	lens2 = _strlen(s2);
 
 	a = malloc(((lens1) + (lens2) + 1) * sizeof(char));
 
 	if (a == NULL)
-	{
 		return (NULL);
-	}
 
-	j = 0;
-	while (j < lens1)
+	for (j = 0; j < lens1; j++)
 	{
 		a[j] = s1[j];
-		j++;
 	}
 
 	for (i = lens1, e = 0; e <= lens2; i++, e++)
