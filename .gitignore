@@ -1,3 +1,6 @@
+# Ignore Emacs buffer files
+*#
 *~
-hsh
-shell
+
+# Ignore executable file
+*.out

@@ -1,9 +1,9 @@
-#ifndef _MAIN_H_
-#define _MAIN_H_
+#ifndef _HOLBERTON_H_
+#define _HOLBERTON_H_
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -20,13 +20,8 @@
 #define EWSIZE 410
 #define ENOBUILTIN 415
 #define EBADCD 726
-#define true 1
-#define false 0
 
 extern char **environ;
-
-/* boolean type - true as 1 and false as 0*/
-typedef int bool;
 
 /**
  * struct linkedList - linked list data structure
@@ -79,21 +74,21 @@ typedef struct builtInCommands
 config *configInit(config *build);
 
 /* built_ins */
-bool findBuiltIns(config *build);
+_Bool findBuiltIns(config *build);
 int exitFunc(config *build);
 int historyFunc(config *build);
 int aliasFunc(config *build);
 
 /* cd */
 int cdFunc(config *);
-bool cdToHome(config *build);
-bool cdToPrevious(config *build);
-bool cdToCustom(config *build);
-bool updateEnviron(config *build);
+_Bool cdToHome(config *build);
+_Bool cdToPrevious(config *build);
+_Bool cdToCustom(config *build);
+_Bool updateEnviron(config *build);
 
 /* cd2 */
 int updateOld(config *build);
-bool updateCur(config *build, int index);
+_Bool updateCur(config *build, int index);
 
 /* env */
 int envFunc(config *build);
@@ -142,13 +137,13 @@ void displayNewLine(void);
 void sigintHandler(int sigint);
 
 /* check_path */
-bool checkPath(config *);
-bool checkEdgeCases(config *build);
+_Bool checkPath(config *);
+_Bool checkEdgeCases(config *build);
 
 /* split_string */
-bool splitString(config *build);
+_Bool splitString(config *build);
 unsigned int countWords(char *s);
-bool isSpace(char c);
+_Bool isSpace(char c);
 
 /* string_helpers1 */
 int _strlen(char *s);
